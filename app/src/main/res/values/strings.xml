@@ -1,0 +1,39 @@
+<resources>
+    <!-- Global strings -->
+    <string name="app_name">RoverBluetooth</string>
+    <string name="settings">Settings</string>
+    <string name="website">https://squareboot.github.io</string>
+    <string name="share_text">Visit SquareBoot\'s website and discover RoverBluetooth! Simple-to-use, with this app you can control all the cars or devices with the same technology. Look at it: https://squareboot.github.io</string>
+
+    <!-- Home -->
+    <string name="distance">Distance:</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_OK">I got it</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="connected">Connected!</string>
+    <string name="disconnected">"Disconnected."</string>
+    <string name="already_connected">Already connected!</string>
+    <string name="error_unsupported">Unfortunately, Bluetooth connection isn\'t supported on your device.</string>
+    <string name="error_no_devices_found">No paired Bluetooth devices found!</string>
+    <string name="connection_error">Error during connection!</string>
+    <string name="error">An error occurred.</string>
+    <string name="BT_disabled">Bluetooth disabled.</string>
+
+    <!-- Toolbar -->
+    <string name="disconnect">Disconnect</string>
+    <string name="connect">Connect</string>
+
+    <!-- Settings -->
+    <string name="general_settings">General</string>
+    <string name="save_speed">Save speed</string>
+    <string name="keep_screen_on">Keep screen on</string>
+    <string name="accelerometer_speed">Accelerometer speed:</string>
+    <string name="connectivity">Connectivity</string>
+    <string name="bt_auto_on">Automatically turn on Bluetooth</string>
+    <string name="bt_auto_off">Turn off BT when closing the app</string>
+    <string name="bt_auto_connect">Auto connect to last device</string>
+    <string name="open_source">Open-source</string>
+    <string name="visit_website"><u>Visit SquareBoot\'s site</u></string>
+    <string name="license">CC BY-NC-SA SquareBoot</string>
+</resources>

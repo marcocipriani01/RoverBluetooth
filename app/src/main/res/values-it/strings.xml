@@ -1,0 +1,38 @@
+<resources>
+    <!-- Stringhe globali -->
+    <string name="settings">Impostazioni</string>
+    <string name="website">https://squareboot.github.io</string>
+    <string name="share_text">Visita il sito di SquareBoot e scopri RoverBluetooth! Facile da usare, con questa app puoi controllare tutte le macchinette radiocomandate con la stessa tecnologia. Leggi di più: https://squareboot.github.io</string>
+
+    <!-- Schermata principale -->
+    <string name="distance">Distanza:</string>
+
+    <!-- Messaggi -->
+    <string name="dialog_OK">Ho capito</string>
+    <string name="dialog_cancel">Indietro</string>
+    <string name="connected">Connesso!</string>
+    <string name="disconnected">Disconnesso.</string>
+    <string name="already_connected">Già connesso!</string>
+    <string name="error_unsupported">Sfortunatamente, il Bluetooth non è supportato dal tuo dispositivo.</string>
+    <string name="error_no_devices_found">Nessun dispositivo accoppiato trovato.</string>
+    <string name="connection_error">Errore durante la connessione!</string>
+    <string name="error">Si è verificato un errore.</string>
+    <string name="BT_disabled">Bluetooth spento.</string>
+
+    <!-- Toolbar -->
+    <string name="disconnect">Disconnetti</string>
+    <string name="connect">Connetti</string>
+
+    <!-- Impostazioni -->
+    <string name="general_settings">Generale</string>
+    <string name="save_speed">Salva velocità</string>
+    <string name="keep_screen_on">Tieni lo schermo acceso</string>
+    <string name="accelerometer_speed">Velocità sensore:</string>
+    <string name="connectivity">Connettività</string>
+    <string name="bt_auto_on">Accendi automaticamente il Bluetooth</string>
+    <string name="bt_auto_off">Spegni il BT alla chiusura</string>
+    <string name="bt_auto_connect">Connettiti automaticamente all\'ultimo dispositivo</string>
+    <string name="open_source">Open-source</string>
+    <string name="visit_website"><u>Visita il sito di SquareBoot</u></string>
+    <string name="license">CC BY-NC-SA SquareBoot</string>
+</resources>

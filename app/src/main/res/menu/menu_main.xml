@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="squareboot.roverbluetooth.MainActivity" >
+
+    <!-- Default toolbar button -->
+    <!-- <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        android:orderInCategory="100"
+        app:showAsAction="never" /> -->
+
+    <item
+        android:id="@+id/toolbar_disconnect"
+        android:title="@string/disconnect"
+        android:orderInCategory="200"
+        android:icon="@drawable/bluetooth_disabled_material"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/toolbar_connect"
+        android:title="@string/connect"
+        android:orderInCategory="200"
+        android:icon="@drawable/bluetooth_material"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/toolbar_settings"
+        android:title="@string/settings"
+        android:orderInCategory="200"
+        android:icon="@drawable/settings_material"
+        app:showAsAction="always" />
+
+</menu>
