@@ -1,4 +1,4 @@
-package squareboot.roverbluetooth;
+package io.github.marcocipriani01.roverbluetooth;
 
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;

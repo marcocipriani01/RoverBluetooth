@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="squareboot.roverbluetooth.SettingsActivity">
+    tools:context="io.github.marcocipriani01.roverbluetooth.SettingsActivity">
 
     <ScrollView
         android:layout_width="match_parent"

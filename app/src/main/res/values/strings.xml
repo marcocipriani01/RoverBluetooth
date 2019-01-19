@@ -2,8 +2,8 @@
     <!-- Global strings -->
     <string name="app_name">RoverBluetooth</string>
     <string name="settings">Settings</string>
-    <string name="website">https://squareboot.github.io</string>
-    <string name="share_text">Visit SquareBoot\'s website and discover RoverBluetooth! Simple-to-use, with this app you can control all the cars or devices with the same technology. Look at it: https://squareboot.github.io</string>
+    <string name="website">https://marcocipriani01.github.io</string>
+    <string name="share_text">Visit marcocipriani01\'s website and discover RoverBluetooth! Simple-to-use, with this app you can control all the cars or devices with the same technology. Look at it: https://marcocipriani01.github.io</string>
 
     <!-- Home -->
     <string name="distance">Distance:</string>
@@ -34,6 +34,6 @@
     <string name="bt_auto_off">Turn off BT when closing the app</string>
     <string name="bt_auto_connect">Auto connect to last device</string>
     <string name="open_source">Open-source</string>
-    <string name="visit_website"><u>Visit SquareBoot\'s site</u></string>
-    <string name="license">CC BY-NC-SA SquareBoot</string>
+    <string name="visit_website"><u>Visit marcocipriani01\'s site</u></string>
+    <string name="license">CC BY-NC-SA marcocipriani01</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="squareboot.roverbluetooth">
+    package="io.github.marcocipriani01.roverbluetooth">
 
     <!-- Bluetooth basic permissions -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />

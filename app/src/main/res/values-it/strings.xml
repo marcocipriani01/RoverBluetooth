@@ -1,8 +1,8 @@
 <resources>
     <!-- Stringhe globali -->
     <string name="settings">Impostazioni</string>
-    <string name="website">https://squareboot.github.io</string>
-    <string name="share_text">Visita il sito di SquareBoot e scopri RoverBluetooth! Facile da usare, con questa app puoi controllare tutte le macchinette radiocomandate con la stessa tecnologia. Leggi di più: https://squareboot.github.io</string>
+    <string name="website">https://marcocipriani01.github.io</string>
+    <string name="share_text">Visita il sito di marcocipriani01 e scopri RoverBluetooth! Facile da usare, con questa app puoi controllare tutte le macchinette radiocomandate con la stessa tecnologia. Leggi di più: https://marcocipriani01.github.io</string>
 
     <!-- Schermata principale -->
     <string name="distance">Distanza:</string>
@@ -33,6 +33,6 @@
     <string name="bt_auto_off">Spegni il BT alla chiusura</string>
     <string name="bt_auto_connect">Connettiti automaticamente all\'ultimo dispositivo</string>
     <string name="open_source">Open-source</string>
-    <string name="visit_website"><u>Visita il sito di SquareBoot</u></string>
-    <string name="license">CC BY-NC-SA SquareBoot</string>
+    <string name="visit_website"><u>Visita il sito di marcocipriani01</u></string>
+    <string name="license">CC BY-NC-SA marcocipriani01</string>
 </resources>

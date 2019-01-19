@@ -1,4 +1,4 @@
-package squareboot.roverbluetooth;
+package io.github.marcocipriani01.roverbluetooth;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
