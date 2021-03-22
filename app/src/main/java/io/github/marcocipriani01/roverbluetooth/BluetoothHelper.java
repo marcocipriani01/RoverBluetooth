@@ -12,20 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@SuppressWarnings("unused")
 public class BluetoothHelper {
 
     private static final UUID DEFAULT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-
+    private final BluetoothAdapter bluetoothAdapter;
     private boolean isConnected = false;
-
-    private BluetoothAdapter bluetoothAdapter;
     private BluetoothSocket bluetoothSocket;
     private BluetoothDevice bluetoothDevice;
     private BluetoothCallback listener = null;
     private BufferedReader input;
     private OutputStream output;
-
 
     public BluetoothHelper() {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -33,23 +29,25 @@ public class BluetoothHelper {
 
     public void enableBluetooth() {
         //Enable the Bluetooth without user prompt (avoid using this)
-        if ((bluetoothAdapter != null) && (!bluetoothAdapter.isEnabled())) {
+        if ((bluetoothAdapter != null) && (!bluetoothAdapter.isEnabled()))
             bluetoothAdapter.enable();
-        }
     }
 
     public void disableBluetooth() {
         //Disable the Bluetooth without user prompt
-        if ((bluetoothAdapter != null) && (bluetoothAdapter.isEnabled())) {
+        if ((bluetoothAdapter != null) && (bluetoothAdapter.isEnabled()))
             bluetoothAdapter.disable();
-        }
     }
 
     public void connectToAddress(String address) {
         //Connect to a device from the address (a code like 34:FG:SR:95:45:62)
         if (!address.equals("null")) {
             BluetoothDevice device = bluetoothAdapter.getRemoteDevice(address);
-            new ConnectThread(device).start();
+            try {
+                new ConnectThread(device).start();
+            } catch (IOException e) {
+                if (listener != null) listener.onBTError(e.getMessage());
+            }
         }
     }
 
@@ -63,49 +61,39 @@ public class BluetoothHelper {
     }
 
     public void connectToDevice(BluetoothDevice device) {
-        new ConnectThread(device).start();
+        try {
+            new ConnectThread(device).start();
+        } catch (IOException e) {
+            if (listener != null) listener.onBTError(e.getMessage());
+        }
     }
 
     public void disconnect() {
         try {
             bluetoothSocket.close();
-
         } catch (IOException e) {
             if (listener != null) {
-                listener.onError(e.getMessage());
+                listener.onBTError(e.getMessage());
             }
         }
     }
 
-    public boolean getIsConnected() {
+    public boolean isConnected() {
         return isConnected;
     }
 
     public void send(String message) {
-        //Add a line feed code
-        message = message + "\n";
-
-        //Send the message
         try {
-            output.write(message.getBytes());
-
+            output.write((message + "\n").getBytes());
         } catch (IOException e) {
             isConnected = false;
-
-            if (listener != null) {
-                listener.onDisconnect(bluetoothDevice, e.getMessage());
-            }
+            if (listener != null) listener.onBTDisconnected(bluetoothDevice, e.getMessage());
         }
     }
 
     public List<BluetoothDevice> getPairedDevices() {
         //Get a list with all the paired devices
-        List<BluetoothDevice> devices = new ArrayList<>();
-        for (BluetoothDevice bluetoothDevice : bluetoothAdapter.getBondedDevices()) {
-            devices.add(bluetoothDevice);
-        }
-
-        return devices;
+        return new ArrayList<>(bluetoothAdapter.getBondedDevices());
     }
 
     public BluetoothSocket getBluetoothSocket() {
@@ -129,83 +117,65 @@ public class BluetoothHelper {
     }
 
     public interface BluetoothCallback {
-        //You can use BluetoothCallback to put voids into your Activity (@Override them)
-        void onConnect(BluetoothDevice device);
 
-        void onDisconnect(BluetoothDevice device, String message);
+        void onBTConnected(BluetoothDevice device);
 
-        void onMessage(String message);
+        void onBTDisconnected(BluetoothDevice device, String message);
 
-        void onError(String message);
+        void onBTMessage(String message);
 
-        void onConnectError(BluetoothDevice device, String message);
+        void onBTError(String message);
+
+        void onBTConnectError(BluetoothDevice device, String message);
     }
 
-    private class ReceiveThread extends Thread implements Runnable {
+    private class ReceiveThread extends Thread {
+
+        @Override
         public void run() {
             String message;
-
             try {
                 while ((message = input.readLine()) != null) {
-                    if (listener != null)
-                        listener.onMessage(message);
+                    if (listener != null) listener.onBTMessage(message);
                 }
-
             } catch (IOException e) {
                 isConnected = false;
-
-                if (listener != null) {
-                    listener.onDisconnect(bluetoothDevice, e.getMessage());
-                }
+                if (listener != null)
+                    listener.onBTDisconnected(bluetoothDevice, e.getMessage());
             }
         }
     }
 
     private class ConnectThread extends Thread {
-        public ConnectThread(BluetoothDevice device) {
+
+        public ConnectThread(BluetoothDevice device) throws IOException {
             BluetoothHelper.this.bluetoothDevice = device;
-
-            try {
-                BluetoothHelper.this.bluetoothSocket = device.createRfcommSocketToServiceRecord(DEFAULT_UUID);
-
-            } catch (IOException e) {
-                if (listener != null) {
-                    listener.onError(e.getMessage());
-                }
-            }
+            BluetoothHelper.this.bluetoothSocket = device.createRfcommSocketToServiceRecord(DEFAULT_UUID);
         }
 
+        @Override
         public void run() {
             bluetoothAdapter.cancelDiscovery();
-
             try {
                 bluetoothSocket.connect();
                 output = bluetoothSocket.getOutputStream();
                 input = new BufferedReader(new InputStreamReader(bluetoothSocket.getInputStream()));
                 isConnected = true;
-
                 new ReceiveThread().start();
-
-                if (listener != null) {
-                    listener.onConnect(bluetoothDevice);
-                }
-
+                if (listener != null)
+                    listener.onBTConnected(bluetoothDevice);
             } catch (IOException e) {
-                if (listener != null) {
-                    listener.onConnectError(bluetoothDevice, e.getMessage());
-                }
-
+                if (listener != null)
+                    listener.onBTConnectError(bluetoothDevice, e.getMessage());
                 try {
                     bluetoothSocket.close();
-
                 } catch (IOException closeException) {
 
                     if (listener != null) {
-                        listener.onError(closeException.getMessage());
+                        listener.onBTError(closeException.getMessage());
                     }
                 }
             }
         }
     }
 }
-

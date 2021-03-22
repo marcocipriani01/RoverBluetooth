@@ -5,10 +5,13 @@
     android:layout_height="match_parent"
     tools:context="io.github.marcocipriani01.roverbluetooth.MainActivity">
 
-    <!-- Toolbar -->
-    <include
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/app_bar"
-        layout="@layout/app_bar" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,37 +21,34 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingEnd="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
             android:paddingStart="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin">
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingEnd="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
 
             <!-- Steering wheel -->
             <SeekBar
-            android:id="@+id/steering_wheel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/rover_forward"
-            android:layout_alignRight="@+id/rover_forward"
-            android:max="200"
-            android:paddingEnd="65dp"
-            android:paddingStart="65dp"
-            android:progress="100"
-            android:progressTint="@android:color/darker_gray"
-            android:thumb="@drawable/steering_wheel" />
+                android:id="@+id/steering_wheel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/rover_forward"
+                android:max="200"
+                android:paddingStart="65dp"
+                android:paddingEnd="65dp"
+                android:progress="100"
+                android:progressTint="@android:color/darker_gray"
+                android:thumb="@drawable/steering_wheel" />
 
             <!-- Stop -->
             <ImageButton
                 android:id="@+id/rover_ackwards"
                 android:layout_width="120dp"
                 android:layout_height="70dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/steering_wheel"
+                android:layout_alignParentStart="true"
                 android:onClick="buttonsActions"
-                android:src="@drawable/down_material" />
+                android:src="@drawable/down_material"
+                tools:ignore="ContentDescription" />
 
             <!-- Backwards -->
             <ImageButton
@@ -57,9 +57,9 @@
                 android:layout_height="70dp"
                 android:layout_alignTop="@id/rover_ackwards"
                 android:layout_toEndOf="@id/rover_ackwards"
-                android:layout_toRightOf="@id/rover_ackwards"
                 android:onClick="buttonsActions"
-                android:src="@drawable/pause_material" />
+                android:src="@drawable/pause_material"
+                tools:ignore="ContentDescription" />
 
             <!-- Forwards -->
             <ImageButton
@@ -68,18 +68,17 @@
                 android:layout_height="70dp"
                 android:layout_alignBottom="@id/rover_stop"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:onClick="buttonsActions"
-                android:src="@drawable/up_material" />
+                android:src="@drawable/up_material"
+                tools:ignore="ContentDescription" />
 
             <!-- Tap this view to disable/enable fullscreen -->
             <View
                 android:id="@+id/fullscreen_switcher"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/rover_ackwards"
+                android:layout_alignParentStart="true"
                 android:onClick="switchToFullScreen" />
 
             <!-- Tap this view to disable/enable fullscreen -->
@@ -89,10 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/fullscreen_switcher"
                 android:layout_alignTop="@+id/rover_stop"
-                android:layout_toEndOf="@id/rover_stop"
-                android:layout_toLeftOf="@id/rover_forward"
-                android:layout_toRightOf="@id/rover_stop"
                 android:layout_toStartOf="@id/rover_forward"
+                android:layout_toEndOf="@id/rover_stop"
                 android:onClick="switchToFullScreen" />
 
             <!-- Forwards speed -->
@@ -100,11 +97,9 @@
                 android:id="@+id/forwards_speed"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_alignEnd="@+id/rover_forward"
-                android:layout_alignRight="@+id/rover_forward"
                 android:layout_below="@id/fullscreen_switcher"
+                android:layout_alignEnd="@+id/rover_forward"
                 android:layout_toEndOf="@+id/rover_light_on"
-                android:layout_toRightOf="@+id/rover_light_on"
                 android:max="255"
                 android:maxHeight="55dp"
                 android:minHeight="55dp"
@@ -118,11 +113,9 @@
                 android:id="@+id/backwards_speed"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_alignEnd="@+id/rover_forward"
-                android:layout_alignRight="@+id/rover_forward"
                 android:layout_below="@id/forwards_speed"
+                android:layout_alignEnd="@+id/rover_forward"
                 android:layout_toEndOf="@+id/rover_light_on"
-                android:layout_toRightOf="@+id/rover_light_on"
                 android:max="255"
                 android:maxHeight="55dp"
                 android:minHeight="55dp"
@@ -137,35 +130,33 @@
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_above="@id/backwards_speed"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@id/fullscreen_switcher"
+                android:layout_alignParentStart="true"
                 android:onClick="buttonsActions"
-                android:src="@drawable/lamp_material" />
+                android:src="@drawable/lamp_material"
+                tools:ignore="ContentDescription" />
 
             <!-- Light -->
             <ImageButton
                 android:id="@+id/rover_light_off"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:layout_alignBottom="@id/backwards_speed"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@id/rover_light_on"
+                android:layout_alignBottom="@id/backwards_speed"
+                android:layout_alignParentStart="true"
                 android:onClick="buttonsActions"
-                android:src="@drawable/power_material" />
+                android:src="@drawable/power_material"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/rover_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/backwards_speed"
+                android:layout_alignParentStart="true"
                 android:layout_marginTop="16dp"
                 android:text="@string/distance"
                 android:textSize="24sp" />
-
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
